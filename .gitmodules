@@ -1,0 +1,6 @@
+[submodule "laravel/horizon"]
+	path = laravel/horizon
+	url = git@github.com:laravel/horizon
+[submodule "laravel/framework"]
+	path = laravel/framework
+	url = git@github.com:laravel/framework

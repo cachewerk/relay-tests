@@ -1,0 +1,24 @@
+diff --git a/src/Illuminate/Foundation/Testing/Concerns/InteractsWithRedis.php b/src/Illuminate/Foundation/Testing/Concerns/InteractsWithRedis.php
+index e23ae4c3fd..42b5830f18 100644
+--- a/src/Illuminate/Foundation/Testing/Concerns/InteractsWithRedis.php
++++ b/src/Illuminate/Foundation/Testing/Concerns/InteractsWithRedis.php
+@@ -97,6 +97,7 @@ public function redisDriverProvider()
+         return [
+             ['predis'],
+             ['phpredis'],
++            ['relay'],
+         ];
+     }
+ 
+diff --git a/src/Illuminate/Redis/RedisManager.php b/src/Illuminate/Redis/RedisManager.php
+index d7c976210f..3b2f9edc38 100644
+--- a/src/Illuminate/Redis/RedisManager.php
++++ b/src/Illuminate/Redis/RedisManager.php
+@@ -171,6 +171,7 @@ protected function connector()
+         return match ($this->driver) {
+             'predis' => new PredisConnector,
+             'phpredis' => new PhpRedisConnector,
++            'relay' => new \CacheWerk\Relay\Laravel\RelayConnector,
+             default => null,
+         };
+     }

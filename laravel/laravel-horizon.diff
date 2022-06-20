@@ -1,0 +1,25 @@
+diff --git a/phpunit.xml.dist b/phpunit.xml.dist
+index 9b06d67..39daa20 100644
+--- a/phpunit.xml.dist
++++ b/phpunit.xml.dist
+@@ -21,6 +21,6 @@
+         </testsuite>
+     </testsuites>
+     <php>
+-        <server name="REDIS_CLIENT" value="predis"/>
++        <server name="REDIS_CLIENT" value="relay"/>
+     </php>
+ </phpunit>
+diff --git a/tests/IntegrationTest.php b/tests/IntegrationTest.php
+index 84a2b88..3860feb 100644
+--- a/tests/IntegrationTest.php
++++ b/tests/IntegrationTest.php
+@@ -128,7 +128,7 @@ protected function workerOptions()
+      */
+     protected function getPackageProviders($app)
+     {
+-        return ['Laravel\Horizon\HorizonServiceProvider'];
++        return ['Laravel\Horizon\HorizonServiceProvider', 'CacheWerk\Relay\Laravel\RelayServiceProvider'];
+     }
+ 
+     /**
